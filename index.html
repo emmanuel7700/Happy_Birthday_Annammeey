@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#120b22" />
-  <title>For Ann Mary ❤️</title>
+  <title>For Annamma ❤️</title>
   <style>
     :root{
       --bg:#0d0717;
@@ -144,10 +144,7 @@
       transform:scale(.65);opacity:0;transition:.8s .35s cubic-bezier(.2,.9,.2,1);
       pointer-events:none;
     }
-    .surprise-message.show{
-      transform:scale(1);opacity:1;
-      pointer-events:auto;
-    }
+    .surprise-message.show{transform:scale(1);opacity:1;pointer-events:auto}
     .surprise-message .big{font-family:Georgia,serif;font-size:clamp(2.4rem,8vw,5.4rem);margin:0;color:#ffd9e6}
     .surprise-message p{color:var(--muted);line-height:1.7}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -198,6 +195,77 @@
     .envelope.open .letter{transform:translateY(-215px);height:590px;z-index:6}
     .envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.5)}
     .open-help{text-align:center;color:var(--muted);margin-top:18px}
+
+    /* Only new section: curiosity reveal + timeline. Existing interface above is untouched. */
+    .story-tease{
+      padding:34px;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+      box-shadow:var(--shadow);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .story-tease::before{
+      content:"";
+      position:absolute;
+      width:260px;height:260px;border-radius:50%;
+      background:rgba(255,122,168,.14);
+      filter:blur(35px);
+      top:-100px;left:50%;transform:translateX(-50%);
+      pointer-events:none;
+    }
+    .story-tease .tiny{color:var(--rose2);letter-spacing:.18em;text-transform:uppercase;font-size:.72rem}
+    .story-tease h3{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.3rem);font-weight:500;margin:12px 0 8px}
+    .story-tease p{color:var(--muted);line-height:1.75;max-width:650px;margin:0 auto}
+    .story-button{position:relative;z-index:2}
+    .story-content{
+      max-height:0;opacity:0;overflow:hidden;
+      transition:max-height 1.2s cubic-bezier(.2,.8,.2,1),opacity .7s ease,margin .7s ease;
+      margin-top:0;
+    }
+    .story-content.open{max-height:6500px;opacity:1;margin-top:45px}
+    .story-heading{text-align:center;margin-bottom:45px}
+    .story-heading h2{font-family:Georgia,serif;font-size:clamp(2.3rem,6vw,4rem);font-weight:500;margin:0}
+    .story-heading p{color:var(--muted);margin:12px auto 0;max-width:680px;line-height:1.7}
+    .timeline{position:relative;max-width:820px;margin:0 auto;padding:10px 0}
+    .timeline::before{
+      content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;
+      background:linear-gradient(transparent,var(--rose2) 5%,rgba(255,255,255,.28) 50%,var(--rose2) 95%,transparent);
+      transform:translateX(-50%);
+    }
+    .moment{position:relative;width:50%;padding:0 38px 36px 0}
+    .moment:nth-child(even){margin-left:50%;padding:0 0 36px 38px}
+    .moment::after{
+      content:"";position:absolute;top:18px;right:-7px;width:13px;height:13px;border-radius:50%;
+      background:var(--rose2);box-shadow:0 0 0 7px rgba(255,122,168,.12),0 0 28px rgba(255,122,168,.65);
+    }
+    .moment:nth-child(even)::after{left:-7px;right:auto}
+    .moment-card{
+      padding:24px;border-radius:23px;border:1px solid var(--line);
+      background:var(--glass);backdrop-filter:blur(16px);
+      box-shadow:0 18px 50px rgba(0,0,0,.16);
+      transform:translateY(24px);opacity:0;
+      transition:.7s ease;
+    }
+    .moment-card.visible{transform:none;opacity:1}
+    .moment .date{font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose2);font-weight:800}
+    .moment h3{font-family:Georgia,serif;font-size:1.55rem;margin:8px 0 10px}
+    .moment p{color:var(--muted);line-height:1.78;margin:0}
+    .moment.highlight .moment-card{border-color:rgba(255,180,205,.4);background:linear-gradient(145deg,rgba(255,122,168,.14),rgba(255,255,255,.055))}
+    .forever{
+      margin:18px auto 0;max-width:820px;padding:34px 28px;text-align:center;
+      border:1px solid rgba(255,180,205,.35);border-radius:28px;
+      background:radial-gradient(circle at 50% 0,rgba(255,122,168,.2),transparent 55%),var(--glass);
+      box-shadow:0 24px 70px rgba(0,0,0,.25);
+    }
+    .forever .heart-mark{font-size:2rem}
+    .forever h3{font-family:Georgia,serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:500;color:#ffd7e6;margin:10px 0 18px}
+    .forever p{font-family:Georgia,serif;font-size:clamp(1.15rem,2.8vw,1.45rem);line-height:1.85;margin:0;color:#fff1f6}
+    .forever strong{color:var(--gold)}
+    .to-be-continued{text-align:center;color:var(--rose2);font-family:Georgia,serif;font-size:1.35rem;margin-top:30px}
+
     .cake-zone{text-align:center;padding-bottom:120px}
     .cake{
       margin:45px auto 22px;width:260px;height:180px;position:relative;
@@ -221,9 +289,7 @@
       position:fixed;bottom:-40px;z-index:0;pointer-events:none;
       animation:floatUp linear forwards;opacity:.75;
     }
-    @keyframes floatUp{
-      to{transform:translateY(-115vh) rotate(360deg);opacity:0}
-    }
+    @keyframes floatUp{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
     .confetti{
       position:fixed;top:-20px;z-index:30;width:9px;height:14px;pointer-events:none;
       animation:fall linear forwards;
@@ -239,6 +305,10 @@
       .letter{padding:28px 25px}
       .envelope.open .letter{transform:translateY(-175px);height:560px}
       .envelope-wrap{min-height:640px}
+      .timeline::before{left:14px}
+      .moment,.moment:nth-child(even){width:100%;margin-left:0;padding:0 0 26px 42px}
+      .moment::after,.moment:nth-child(even)::after{left:8px;right:auto}
+      .story-tease{padding:28px 20px}
     }
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
@@ -247,25 +317,22 @@
 </head>
 <body>
   <button class="music" id="musicBtn" aria-label="Play gentle birthday music" title="Music">♫</button>
-
   <main>
     <section class="hero">
       <div class="shell">
         <div class="eyebrow">A little surprise made with love</div>
-        <h1>Happy Birthday<span>Ann Mary</span></h1>
+        <h1>Happy Birthday<span>Annamma</span></h1>
         <p>
           For the person whose smile I love, whose character I fell for,
           and whose conversations I never want to end.
         </p>
         <div class="date-pill">🎂 September 20</div>
-
         <div class="countdown" id="countdown" aria-label="Birthday countdown">
           <div class="timebox"><strong id="days">00</strong><small>Days</small></div>
           <div class="timebox"><strong id="hours">00</strong><small>Hours</small></div>
           <div class="timebox"><strong id="minutes">00</strong><small>Minutes</small></div>
           <div class="timebox"><strong id="seconds">00</strong><small>Seconds</small></div>
         </div>
-
         <button class="primary" onclick="document.querySelector('#gift').scrollIntoView()">Start the surprise ✨</button>
         <div class="hint">Best experienced with sound on</div>
       </div>
@@ -278,7 +345,6 @@
           <h2>Something for you</h2>
           <p>Tap the gift. There is a small surprise waiting inside.</p>
         </div>
-
         <div class="gift-stage">
           <div class="gift" id="giftBox" role="button" tabindex="0" aria-label="Open birthday gift">
             <div class="gift-box"></div>
@@ -289,7 +355,7 @@
             <div class="gift-label">Tap to open</div>
           </div>
           <div class="surprise-message" id="surpriseMessage">
-            <p class="big">You are special, Ann Mary ❤️</p>
+            <p class="big">You are special, Annamme..... ❤️</p>
             <p>This page exists because you make ordinary moments feel worth remembering.</p>
             <button class="primary" onclick="document.querySelector('#reasons').scrollIntoView()">Keep going</button>
           </div>
@@ -329,20 +395,19 @@
           <h2>A note for you</h2>
           <p>Tap the envelope to open it.</p>
         </div>
-
         <div class="envelope-wrap">
           <div>
             <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open birthday letter">
               <div class="envelope-back"></div>
               <div class="letter">
-                <h3>Happy Birthday, Ann Mary ❤️</h3>
+                <h3>Happy Birthday, Annamma ❤️</h3>
                 <p>Happy Birthday to one of the most wonderful people I have ever met.</p>
                 <p>There are so many things I admire about you. Your smile is one of them—it has a way of making everything feel lighter. But more than that, I have fallen for the person you are. Your kindness, your boldness, the way you care about people, and the way you stay positive are what make you truly special.</p>
                 <p>One of my favourite things is talking to you. I honestly never get tired of our conversations. No matter how long they last or what we are talking about, I could keep listening to you. Somehow, you make every conversation feel easy and meaningful.</p>
                 <p>I still remember how nervous I was when I told you how I felt. I was afraid and did not know what to expect, but you made me feel comfortable around you. That meant more to me than you probably know, and it is something I will always be grateful for.</p>
                 <p>Thank you for being yourself, for your support, and for bringing so much happiness into my life.</p>
                 <p>I hope this birthday brings you as much joy as you bring to the people around you. Keep smiling, keep being the amazing person you are, and never change.</p>
-                <p>Happy Birthday, Ann Mary. I am really lucky to have you in my life, and I hope we get to create many more beautiful memories together.</p>
+                <p>Happy Birthday, Annamma. I am really lucky to have you in my life, and I hope we get to create many more beautiful memories together.</p>
                 <p class="sign"><strong>With love,<br>Emmanuel ❤️</strong></p>
               </div>
               <div class="envelope-front"></div>
@@ -351,6 +416,175 @@
             </div>
             <p class="open-help" id="letterHelp">Tap once to open • Tap again to close</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW: Timeline is inserted immediately after the letter -->
+    <section id="ourStory">
+      <div class="shell">
+        <div class="story-tease">
+          <div class="tiny">Before you keep scrolling...</div>
+          <h3>Wait, Annamma… there’s one more thing. ✨</h3>
+          <p>
+            You know where we are now. But I don’t think I’ve ever shown you
+            how all those tiny moments looked from my side.
+          </p>
+          <button class="primary story-button" id="storyBtn">Open our story ❤️</button>
+        </div>
+
+        <div class="story-content" id="storyContent">
+          <div class="story-heading">
+            <h2>How I Met Annamma ❤️</h2>
+            <p>From one small smile over a Physics answer sheet… to someone I never want to lose.</p>
+          </div>
+
+          <div class="timeline">
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">12th Standard • The beginning</div>
+                <h3>📄 A Physics Answer Sheet</h3>
+                <p>
+                  I first saw you when I went to distribute the Physics test answer sheets.
+                  At that time, I thought your name was <strong>Annlee</strong>. Then I realised I had got it completely wrong. 😭
+                  But when you received the answer sheet, you smiled. It was such a small moment,
+                  but that smile gave me a strange curiosity to find out who you were and what your real name was.
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">The very next day</div>
+                <h3>🌸 Deepthy Miss & That Familiar Face</h3>
+                <p>
+                  The next day, I saw you coming to school with Deepthy Miss, who taught me Physics in 11th
+                  and was one of my favourite teachers. After that, I began noticing you more often.
+                  You always seemed to come to class with a pleasant face and a kind, positive energy.
+                  And somehow I still remember that most of the time, you had a spiral book in your hand. 😂
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">Slowly...</div>
+                <h3>👀 My Attention Fell on You</h3>
+                <p>
+                  Gradually I noticed that you were talkative, and I genuinely loved that character.
+                  Your energy, the way you spoke, your pleasant face and the kind of person you seemed to be
+                  kept pulling my attention towards you. I finally asked one of my friends about you.
+                  He simply said, <strong>“Aval oru paavam, nalla koch aanu.”</strong>
+                  Somewhere along the way, my heart had already fallen for you.
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">Still in 12th</div>
+                <h3>🤐 I Chose to Wait</h3>
+                <p>
+                  I shared everything with my close friends, and naturally they told me to tell you.
+                  But I knew it wasn’t the right time. We were in 12th, and I never wanted my feelings
+                  to become something that shifted your mind away from your studies. So even though I wanted
+                  to tell you, I decided to wait.
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">March 19 • After board exams</div>
+                <h3>⏳ Life Moved On</h3>
+                <p>
+                  Board exams ended on March 19. Then came entrance exams, allotments and college.
+                  Once I finally settled into first year, I felt like checking your Instagram profile.
+                  But I couldn’t find it. My brain immediately convinced me that maybe you somehow knew
+                  everything and had blocked me. 😭 I was genuinely disappointed.
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">Second year</div>
+                <h3>📲 One Follow Request</h3>
+                <p>
+                  Then, in second year, I got a follow request from you.
+                  It was just a notification, but my heart was ridiculously happy.
+                  And of course, the whole discussion with my friends started again.
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">One Instagram story</div>
+                <h3>🇦🇷 The Argentina Jersey</h3>
+                <p>
+                  One day you posted a story wearing an Argentina jersey, and I replied.
+                  I normally like and reply to my friends’ stories too, so replying itself wasn’t unusual.
+                  But this one was different. This time, I actually wanted a conversation to begin.
+                  I wanted to talk to you. So I asked about your college, your vacation and little things.
+                  The jersey was really just my excuse to finally start talking to you. 😂
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">Semester break • Munnar</div>
+                <h3>😂 The Plan That Failed</h3>
+                <p>
+                  Long before that, my friends had already drafted a plan. During our semester break,
+                  we went to Munnar and finally decided it was time to text you. We used the number
+                  you had in 12th standard… only to realise later that you weren’t using that number anymore.
+                  After all that planning, the mission failed and the plan was postponed once again. 😂
+                </p>
+              </div>
+            </div>
+
+            <div class="moment highlight">
+              <div class="moment-card">
+                <div class="date">July 13, 2026 ❤️</div>
+                <h3>The Day I Finally Told You</h3>
+                <p>
+                  Finally came July 13. We were on a group call, and my friends gave me an amazing opportunity.
+                  I confessed to you. I wasn’t even most afraid of whether your answer would be yes or no;
+                  I was more afraid of how you would react. I was really nervous.
+                  But the way you handled it stunned me. You were calm and mature, and instead of making
+                  the moment awkward, you tried your best to make me comfortable.
+                  That moment made me respect you even more.
+                </p>
+              </div>
+            </div>
+
+            <div class="moment">
+              <div class="moment-card">
+                <div class="date">From that day onwards...</div>
+                <h3>📞 Then We Started Talking</h3>
+                <p>
+                  From that day, we began talking daily. Small conversations became long calls,
+                  random stories became things I looked forward to, and somewhere between all of that,
+                  a bond was created. And that bond is still going on.
+                  I genuinely love your company, Annamma.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="forever">
+            <div class="heart-mark">♡</div>
+            <h3>One thing I want you to remember, Annamma…</h3>
+            <p>
+              Annamma, I still remember when you told me that you always want me in your life.<br><br>
+              <strong>I want the same.</strong><br>
+              <strong>I want you in my life forever.</strong><br><br>
+              You are one of the rarest gems I have met in my entire life. ❤️
+            </p>
+          </div>
+          <div class="to-be-continued">And our story is still being written… ♾️</div>
         </div>
       </div>
     </section>
@@ -377,7 +611,7 @@
     </section>
   </main>
 
-  <footer>Made especially for Ann Mary • September 20 • Emmanuel</footer>
+  <footer>Made especially for Annamma • September 20 • Emmanuel</footer>
 
   <script>
     const pad = n => String(n).padStart(2,'0');
@@ -398,10 +632,9 @@
       document.getElementById('hours').textContent = pad(Math.floor(diff/3600000)%24);
       document.getElementById('minutes').textContent = pad(Math.floor(diff/60000)%60);
       document.getElementById('seconds').textContent = pad(Math.floor(diff/1000)%60);
-
       if(now.getMonth() === 8 && now.getDate() === 20){
         document.querySelector('.countdown').innerHTML =
-          '<div class="timebox" style="grid-column:1/-1"><strong>It’s your day! 🎉</strong><small>Happy Birthday, Ann Mary</small></div>';
+          '<div class="timebox" style="grid-column:1/-1"><strong>It’s your day! 🎉</strong><small>Happy Birthday, Annamma</small></div>';
       }
     }
     updateCountdown();
@@ -438,11 +671,25 @@
     envelope.addEventListener('click',toggleLetter);
     envelope.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleLetter()}});
 
+    /* New curiosity reveal */
+    const storyBtn=document.getElementById('storyBtn');
+    const storyContent=document.getElementById('storyContent');
+    storyBtn.addEventListener('click',()=>{
+      storyContent.classList.add('open');
+      storyBtn.textContent='This is how it started… ❤️';
+      storyBtn.disabled=true;
+      playChime();
+      setTimeout(()=>storyContent.scrollIntoView({behavior:'smooth',block:'start'}),450);
+
+      const cards=[...document.querySelectorAll('.moment-card')];
+      cards.forEach((card,i)=>setTimeout(()=>card.classList.add('visible'),500+i*170));
+    });
+
     const cake=document.getElementById('cake');
     function blowCandles(){
       if(cake.classList.contains('blown')) return;
       cake.classList.add('blown');
-      document.getElementById('finalLine').textContent='Wish made ✨ Happy Birthday, Ann Mary!';
+      document.getElementById('finalLine').textContent='Wish made ✨ Happy Birthday, Annamma!';
       confettiBurst(190);
       playChime();
     }
@@ -474,11 +721,13 @@
       osc.connect(gain).connect(audioCtx.destination);
       osc.start(start); osc.stop(start+duration);
     }
+
     function playChime(){
       audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
       const t=audioCtx.currentTime;
       [523.25,659.25,783.99,1046.5].forEach((f,i)=>tone(f,t+i*.12,.75,.028));
     }
+
     function playLoop(){
       if(!musicOn)return;
       audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
@@ -487,6 +736,7 @@
       notes.forEach((f,i)=>tone(f,t+i*.65,.9,.018));
       loopTimer=setTimeout(playLoop,notes.length*650);
     }
+
     musicBtn.addEventListener('click',()=>{
       musicOn=!musicOn;
       musicBtn.textContent=musicOn?'❚❚':'♫';
