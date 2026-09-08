@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#120b22" />
   <title>For Annamma ❤️</title>
+
+  <meta property="og:title" content="For Annamma ❤️">
+  <meta property="og:description" content="Something I made just for you ✨❤️">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="For Annamma ❤️">
+  <meta name="twitter:description" content="Something I made just for you ✨❤️">
+
   <style>
     :root{
       --bg:#0d0717;
@@ -319,9 +327,49 @@
       .letter{padding:28px 25px}
       .envelope.open .letter{transform:translateY(-175px);height:560px}
       .envelope-wrap{min-height:640px}
-      .timeline::before{left:14px}
-      .moment,.moment:nth-child(even){width:100%;margin-left:0;padding:0 0 26px 42px}
-      .moment::after,.moment:nth-child(even)::after{left:8px;right:auto}
+      /* Mobile timeline: vertical zig-zag timeline, no swiping */
+      .timeline{
+        max-width:100%;
+        padding:18px 0 8px;
+        overflow:visible;
+      }
+      .timeline::before{
+        left:50%;
+        width:2px;
+        transform:translateX(-50%);
+        background:linear-gradient(transparent,var(--rose2) 4%,rgba(255,255,255,.3) 50%,var(--rose2) 96%,transparent);
+      }
+      .moment,
+      .moment:nth-child(even){
+        width:100%;
+        margin-left:0;
+        padding:0 0 34px;
+      }
+      .moment:nth-child(odd){padding-right:14%}
+      .moment:nth-child(even){padding-left:14%}
+      .moment::after,
+      .moment:nth-child(even)::after{
+        top:22px;
+        left:50%;
+        right:auto;
+        transform:translateX(-50%);
+        width:13px;
+        height:13px;
+      }
+      .moment:nth-child(odd) .moment-card{
+        margin-right:10%;
+        text-align:left;
+      }
+      .moment:nth-child(even) .moment-card{
+        margin-left:10%;
+        text-align:left;
+      }
+      .moment-card{
+        padding:22px 20px;
+        border-radius:22px;
+      }
+      .moment h3{font-size:1.38rem}
+      .moment p{font-size:.94rem;line-height:1.68}
       .story-tease{padding:28px 20px}
     }
     @media(prefers-reduced-motion:reduce){
