@@ -141,12 +141,23 @@
     .gift-label{position:absolute;bottom:34px;z-index:4;font-weight:800;color:#58243c;left:0;right:0;text-align:center}
     .surprise-message{
       position:absolute;z-index:5;text-align:center;padding:25px;
+      width:min(92%,760px);
+      max-height:92%;
+      overflow:auto;
       transform:scale(.65);opacity:0;transition:.8s .35s cubic-bezier(.2,.9,.2,1);
       pointer-events:none;
     }
     .surprise-message.show{transform:scale(1);opacity:1;pointer-events:auto}
-    .surprise-message .big{font-family:Georgia,serif;font-size:clamp(2.4rem,8vw,5.4rem);margin:0;color:#ffd9e6}
-    .surprise-message p{color:var(--muted);line-height:1.7}
+    .surprise-message .big{
+      font-family:Georgia,serif;
+      font-size:clamp(2rem,7vw,4.6rem);
+      line-height:1.08;
+      margin:0 auto 14px;
+      color:#ffd9e6;
+      overflow-wrap:anywhere;
+    }
+    .surprise-message p{color:var(--muted);line-height:1.65;margin:10px auto 0;max-width:620px}
+    .surprise-message .primary{margin-top:20px}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .card{
       padding:28px;border-radius:25px;border:1px solid var(--line);
@@ -300,7 +311,10 @@
       .countdown{grid-template-columns:repeat(2,minmax(100px,140px))}
       .cards{grid-template-columns:1fr}
       section{padding:70px 0}
-      .gift-stage{min-height:380px}
+      .gift-stage{min-height:500px}
+      .surprise-message{padding:22px 16px;width:94%;max-height:94%}
+      .surprise-message .big{font-size:clamp(1.85rem,9vw,3.2rem);line-height:1.1}
+      .surprise-message .primary{margin-top:18px;padding:14px 22px}
       .envelope{height:300px}
       .letter{padding:28px 25px}
       .envelope.open .letter{transform:translateY(-175px);height:560px}
